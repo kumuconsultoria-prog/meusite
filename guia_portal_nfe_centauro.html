@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Portal de Notas Fiscais - GRUPOSRS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 40px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 6px solid #f39c12;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(243, 156, 18, 0.2);
+        }
+        
+        .alert-box strong {
+            color: #d35400;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .alert-box p {
+            color: #856404;
+            font-size: 15px;
+            margin: 5px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 6px solid #2196f3;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
+        }
+        
+        .info-box strong {
+            color: #1565c0;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .info-box p {
+            color: #0d47a1;
+            font-size: 15px;
+            margin: 6px 0;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .image-container {
+            margin: 25px 0;
+            text-align: center;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .image-caption {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .steps {
+            margin-top: 20px;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .step-number {
+            background: #3498db;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-header strong {
+            color: #2c3e50;
+            font-size: 17px;
+        }
+        
+        .step p {
+            color: #495057;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-left: 47px;
+        }
+        
+        .credential-box {
+            background: #ffffff;
+            border: 2px dashed #3498db;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0 15px 47px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .credential-box div {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        
+        .credential-box strong {
+            color: #2c3e50;
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .credential-box span {
+            color: #e74c3c;
+            background: #fef5e7;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3:before {
+            content: "●";
+            color: #3498db;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-card li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            font-size: 15px;
+            color: #495057;
+        }
+        
+        .feature-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .feature-card li strong {
+            color: #2c3e50;
+        }
+        
+        .warning {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 15px 20px;
+            margin: 15px 0 15px 47px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #e65100;
+        }
+        
+        .warning strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .warning ul {
+            margin-top: 8px;
+            margin-left: 20px;
+        }
+        
+        .warning li {
+            margin: 4px 0;
+        }
+        
+        .support-box {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .support-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-box h3:before {
+            content: "🆘";
+            margin-right: 12px;
+            font-size: 28px;
+        }
+        
+        .support-box p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        .support-path {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid #dee2e6;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                padding: 15px;
+            }
+            .section, .header, .info-box, .alert-box, .support-box {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Novo Portal de Notas Fiscais Scala NFe</h1>
+            <p>GRUPO SBF - Sistema de Consulta de NFe Modelo 55</p>
+        </div>
+        
+        <div class="alert-box">
+            <strong>⚠️ ATENÇÃO - MIGRAÇÃO EM ANDAMENTO</strong>
+            <p><strong>Novo endereço: http://scala.netmaster.intra</strong></p>
+            <p><strong>Site antigo será desativado em: 01/12/2025</strong></p>
+            <p>Ambos os endereços funcionarão até a migração completa. Recomendamos começar a utilizar o novo portal imediatamente.</p>
+        </div>
+        
+        <div class="info-box">
+            <strong>🔑 ACESSO UNIFICADO POR LOJA</strong>
+            <p>Cada loja receberá <strong>um único login e senha</strong> para acesso compartilhado por todos os colaboradores autorizados da unidade.</p>
+            <p><strong>Formato do login:</strong> codigo_empresa@centauro.com.br</p>
+        </div>
+        
+        <div class="section">
+            <h2>1. Primeiro Acesso</h2>
+             <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <strong>Acesse o novo portal</strong>
+                    </div>
+                    <p>Digite no navegador: <strong>http://scala.netmaster.intra/</strong></p>
+                </div>
+            <div class="image-container">
+                <img src="login.png" alt="Tela de Login do Portal Scala NFe">
+                <div class="image-caption">Figura 1: Tela inicial de login do Portal Scala NFe</div>
+            </div>
+            
+           
+                
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <strong>Utilize as credenciais padrão fornecidas</strong>
+                    </div>
+                    <div class="credential-box">
+                        <div><strong>Usuário:</strong> <span>ce235@centauro.com.br</span></div>
+                        <div><strong>Senha:</strong> <span>123456</span></div>
+                    </div>
+                    <p style="margin-top: 8px; font-style: italic; color: #6c757d;">* Exemplo ilustrativo. Utilize o código específico da sua loja (SEM zeros a esquerda).</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <strong>Troque a senha padrão (obrigatório)</strong>
+                    </div>
+                    <p>No primeiro acesso, o sistema solicitará a criação de uma nova senha forte.</p>
+                    <div class="warning">
+                        <strong>Requisitos da senha:</strong>
+                        <ul>
+                            <li>Mínimo de <strong>16 caracteres</strong></li>
+                            <li>Letras maiúsculas e minúsculas</li>
+                            <li>Números</li>
+                            <li>Caracteres especiais (@, #, $, etc.)</li>
+                        </ul>
+                    </div>
+                
+                    <div class="image-container">
+                        <img src="senhacentauro.png" alt="Tela de Primeiro Acesso - Alteração de Senha">
+                        <div class="image-caption">Figura 2: Tela de cadastro de nova senha e email de recuperação</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>2. Funcionalidades do Portal</h2>
+            
+            <div class="image-container">
+                <img src="consulta_notas.png" alt="Tela de Consulta de Notas Fiscais">
+                <div class="image-caption">Figura 3: Painel de filtros e pesquisa de Notas Fiscais Eletrônicas</div>
+            </div>
+            
+            <div class="two-columns">
+                <div class="feature-card">
+                    <h3>Filtros de Pesquisa</h3>
+                    <ul>
+                        <li><strong>Matriz e Filial</strong> (obrigatório)</li>
+                        <li>Período de emissão</li>
+                        <li>Número e Série da Nota Fiscal</li>
+                        <li>Número do Pedido</li>
+                        <li>Situação da Nota</li>
+                        <li>Chave de acesso da NFe</li>
+                        <li>CPF/CNPJ do destinatário</li>    
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Download de Documentos</h3>
+                    <ul>
+                        <li>Download individual em <strong>PDF</strong></li>
+                        <li>Download individual em <strong>XML</strong></li>
+                        <li>Download em <strong>lote</strong> (múltiplas notas)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="support-box">
+            <h3>Precisa de Ajuda?</h3>
+            <p><strong>Para dúvidas, problemas de acesso ou suporte técnico:</strong></p>
+            <p>1. Acesse o portal de chamados: <strong>https://sn.gruposbf.com.br/</strong></p>
+            <p>2. Siga o caminho de abertura de chamado:</p>
+            <div class="support-path">
+                TI - SOLICITAÇÕES > SISTEMAS > Sistema: Scala > Dúvida - Scala
+            </div>
+            <p style="margin-top: 12px; font-size: 13px;">Nossa equipe de TI responderá seu chamado em até 24 horas úteis.</p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>GRUPO SBF</strong></p>
+            <p>Documento gerado em outubro de 2025</p>
+        </div>
+    </div>
+</body>
+</html>
